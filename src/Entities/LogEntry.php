@@ -308,13 +308,6 @@ class LogEntry implements Arrayable, Jsonable, JsonSerializable
             $header = trim(str_replace($out[0], '', $header));
         }
 
-        // EXTRACT CONTEXT
-        $contextJson = '{'.\Illuminate\Support\Str::after($header, '{');
-        if (! is_null($context = json_decode($contextJson, true))) {
-            $header = str_replace($contextJson, '', $header);
-            $this->setContext($context);
-        }
-
         return $header;
     }
 
